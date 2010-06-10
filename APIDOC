@@ -1,0 +1,24 @@
+LuaHub documentation
+====================
+
+Lua knows only tables, however JSON (which is used to communicate with the
+GitHub API) has arrays and objects, so I'll be using those terms here for
+clarity.
+
+If you are uncertain how exactly the data returned is formed, you should take a
+look at http://develop.github.com/, which gives more information about the API.
+
+API reference
+-------------
+
+luahub.
+	user.
+		search(name) -> user_array, first_name
+			Search for a user, returns an array of the results,
+			which are objects.
+			If there are any results, a string is returned as well,
+			which is equivalent to user_array[1].name, which may
+			aid simple uses of the API.
+		show(name) -> user
+			Returns user information on a named user. If there is
+			no match, nil is returned.
