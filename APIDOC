@@ -107,3 +107,7 @@ luahub.
 			Lists the contents of a tree with some metadata. I
 			guess this version supplies more metadata?
 		full(user, repo, tree_sha) -> tree_array
+	gist.
+		To do.
+	issues.
+		To do.
