@@ -17,7 +17,7 @@ function _mt_show.__call(user, repo, extra) --variants: repos.show(user)
                              --note show.contributors is different: it takes an extra boolean, whether or not to include anons
 	local t = luahub._apiquery('repos/show', user, repo, extra)
 	if t then
-		t = t.repository
+		t = t[extra] or t.repository or t.repositories
 		return t
 	end
 end
