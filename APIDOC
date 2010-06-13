@@ -87,3 +87,16 @@ luahub.
 		pushable() -> pushable_array
 			Returns an array of all repository you can push to that
 			are not your own.
+	blob.
+		show(user, repo, tree_sha, path) -> blob_info
+			Show information about a specific blob, located by
+			user, repository, the tree for the specific commit the
+			blob is located and the path to that blob.
+		all(user, repo, tree_sha) -> blob_object
+			Provides hashes from all blobs at a certain tree. The
+			keys are the pathnames, and the values are the hashes.
+		full(user, repo, tree_sha) -> blob_array
+			While all() only provides the sha, full() lists some
+			metadata of those blobs. blob_array[n].name gives you
+			the pathname, while blob_array[n].sha gives you the
+			blob's hash.
