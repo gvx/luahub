@@ -100,3 +100,10 @@ luahub.
 			metadata of those blobs. blob_array[n].name gives you
 			the pathname, while blob_array[n].sha gives you the
 			blob's hash.
+	tree.
+		show(user, repo, tree_sha) -> tree_array
+			Lists the contents of a tree with some metadata.
+		full(user, repo, tree_sha) -> tree_array
+			Lists the contents of a tree with some metadata. I
+			guess this version supplies more metadata?
+		full(user, repo, tree_sha) -> tree_array
