@@ -7,7 +7,7 @@ function repos.search(query) -- TODO: add ?language= and ?start_page=
 end
 
 local _mt_show = {}
-setmetatable{repos.show, _mt_show}
+setmetatable(repos.show, _mt_show)
 function _mt_show.__call(user, repo, extra) --variants: repos.show(user)
                              --repos.show(user, repo, 'collaborators') aka repos.show.collaborators(user, repo)
                              --repos.show(user, repo, 'contributors') aka repos.show.contributors(user, repo)
