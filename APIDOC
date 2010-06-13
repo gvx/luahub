@@ -20,5 +20,57 @@ luahub.
 			which is equivalent to user_array[1].name, which may
 			aid simple uses of the API.
 		show(name) -> user
-			Returns user information on a named user. If there is
-			no match, nil is returned.
+			Returns user information on a named user.
+	commits.
+		list(user_id, repository, branch[, path]) -> commit_array
+			Lists all commits of a certain branch of a repository,
+			optionally only those pertaining a certain path.
+		show(user_id, repository, sha) -> commit
+			Gives information on a commit given by its sha hash.
+	tree.
+		show(user_id, repository, tree_sha) -> tree
+			Returns a tree listing of a given tree id.
+		full(user_id, repository, tree_sha) -> tree
+			Basically the same as show, only returns more blob-
+			related metadata.
+	repos.
+		search(query) -> repository_array, repo_name
+			Performs a search query, just like the one on GitHub.
+			If there are any results, the second return value will
+			be the username and repo namee, suitable for uris, for
+			example "gvx/luahub".
+		show(user, repo, extra) -> repository_info
+			It would be just luahub.repos.show(), but GitHub
+			provides several specialized calls, to extract other
+			metadata. Unless otherwise noted,
+			luahub.repos.show(u, r, 'e') is equivalent to
+			luahub.repos.show.e(u, r)
+			Without the extra argument, it retrieves basic
+			information on the given repository.
+		show(user) -> repository_array
+			Lists all public repos (if you are authenticated as
+			that users, it lists private repos as well).
+		show.
+			collaborators(user, repo) -> collaborator_array
+				Lists the collaborators of a given project.
+				(Everyone with push access to that repository.)
+			contributors(user, repo, show_anon) -> contrib_array
+				Lists all contributors for a project. This one
+				is different from the alternative from, because
+				it has an additional argument, show_anon, that
+				makes the function list anonymous contributors
+				as well.
+			network(user, repo) -> network_info
+				Gives advanced network information, useful if
+				you want to make your own network graph.
+			languages(user, repo) -> languages_info
+				Lists the programming languages used for this
+				project, and how much they are used. 
+			tags(user, repo) -> tags_info
+				Lists tags in this project and which SHA they
+				refer to. It returns an object with the tag
+				name as key.
+			branches(user, repo) -> branches_info
+				Gives an object containing references to all
+				branches of this repository. Works the same way
+				as tags().
