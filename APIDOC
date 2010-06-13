@@ -74,3 +74,16 @@ luahub.
 				Gives an object containing references to all
 				branches of this repository. Works the same way
 				as tags().
+		watch(user, repo) -> nil?
+			Start watching a repository. You must be authed.
+		unwatch(user, repo) -> nil?
+			Stop watching a repository. You must be authed.
+		fork(user, repo) -> repo_info
+			Fork a repository. Returns information of the forked
+			repository. You must be authed.
+		keys(repo) -> public_key_array
+			Returns an array containing all public keys you have
+			set up for a specific repository.
+		pushable() -> pushable_array
+			Returns an array of all repository you can push to that
+			are not your own.
