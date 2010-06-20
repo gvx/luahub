@@ -16,7 +16,13 @@ local function _callapi(query)
 	if response == 200 then
 		return json.decode(get)
 	else
-		error('GitHub returned status '..response..': '..json.decode(get).error, 4)
+		local t,a = pcall(json.decode, get)
+		if t then
+			t = ': '..a.error
+		else
+			t = ''
+		end
+		error('GitHub returned status '..response..t, 4)
 	end
 end
 
