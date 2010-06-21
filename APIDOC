@@ -110,4 +110,30 @@ luahub.
 	gist.
 		To do.
 	issues.
-		To do.
+		search(user, repo, state, searchterm) -> issue_array
+			Returns a list of issues matching the search term. The
+			param state should be one of 'open' or 'closed'.
+		list(user, repo, state) -> issue_array
+			Lists either all closed or open issues for the given
+			repository.
+		show(user, repo, issue_id) -> issue
+			Show a certain issue, based on its ID number.
+		comments(user, repo, issue_id) -> comments_list
+			Lists all comments for a given issue.
+		open(user, repo) -> issue
+			Opens an issue (once POST is implemented for LuaHub)
+		close(user, repo, issue_id) -> issue
+			Closes a given issue.
+		reopen(user, repo, issue_id) -> issue
+			Reopens a previously closed issue.
+		labels(user, repo) -> label_array
+			Lists all labels in use for a given repository.
+		addlabel(user, repo, label, issue_id) -> labels
+			Adds a label to an issue.
+		addlabel(user, repo, label) -> labels
+			Adds a label to the project, without attaching it to an
+			issue.
+		removelabel(user, repo, label, issue_id) -> labels
+			Removes a label from a given issue.
+		comment(user, repo, issue_id) -> comment
+			(Needs POST to work.) Adds a comment to a given issue.
