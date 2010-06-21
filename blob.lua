@@ -1,6 +1,9 @@
 local blob = {}
 
-function blob.show(user_id, repository, tree_sha, path) --TODO: add support for ?meta=1
+function blob.show(user_id, repository, tree_sha, path, meta)
+	if meta then
+		path = path .. '?meta=1'
+	end
 	local t = luahub._apiquery('blob/show', user_id, repository, tree_sha, path)
 	return t.blob
 end

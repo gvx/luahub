@@ -88,10 +88,12 @@ luahub.
 			Returns an array of all repository you can push to that
 			are not your own.
 	blob.
-		show(user, repo, tree_sha, path) -> blob_info
+		show(user, repo, tree_sha, path, meta) -> blob_info
 			Show information about a specific blob, located by
 			user, repository, the tree for the specific commit the
-			blob is located and the path to that blob.
+			blob is located and the path to that blob. If meta is
+			true, only meta information on that blob is returned,
+			rather than the actual data.
 		all(user, repo, tree_sha) -> blob_object
 			Provides hashes from all blobs at a certain tree. The
 			keys are the pathnames, and the values are the hashes.

@@ -20,8 +20,8 @@ function issues.comments(user_id, repository, issue_id)
 	return t.comments
 end
 
-function issues.open(user_id, repository) --FIXME: this needs POST to work
-	local t = luahub._apiquery('issues/open', user_id, repository)
+function issues.open(user_id, repository, title, body)
+	local t = luahub._apiquery('issues/open', user_id, repository, {title = title, body = body})
 	return t.issue
 end
 
@@ -50,8 +50,8 @@ function issues.removelabel(user_id, repository, label, issue_id)
 	return t.labels
 end
 
-function issues.comment(user_id, repository, issue_id) --FIXME: add post
-	local t = luahub._apiquery('issues/comment', user_id, repository, label, issue_id)
+function issues.comment(user_id, repository, issue_id, comment)
+	local t = luahub._apiquery('issues/comment', user_id, repository, label, issue_id, {comment = comment})
 	return t.comment
 end
 
