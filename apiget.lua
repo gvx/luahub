@@ -1,18 +1,20 @@
 require 'socket.http'
+require 'socket.url'
 require 'json/json' --require 'json' doesn't work for me
 
-luahub.prefix = 'http://github.com/api/v2/json/'
+luahub.prefix = 'github.com/api/v2/json/'
 local request = socket.http.request
+local escape = socket.url.escape
 local auth = ''
 function set_auth(login, token)
 	if login then
-		auth = '?login='..login..'&token=' .. token
+		auth = login .. ':' .. token
 	else
 		auth = ''
 	end
 end
-local function _callapi(query)
-	local get, response = request(luahub.prefix .. query .. auth)
+local function _callapi(query, body)
+	local get, response = request('http://' .. auth .. luahub.prefix .. query, body)
 	if response == 200 then
 		return json.decode(get)
 	else
@@ -27,5 +29,15 @@ local function _callapi(query)
 end
 
 function luahub._apiquery(...)
-	return _callapi(table.concat({...}, '/'))
+	local query = {...}
+	local body
+	if type(query[#query]) == 'table' then
+		local s = table.remove(query)
+		body = {}
+		for k,v in pairs(s) do
+			table.insert(body, k .. '=' .. escape(v))
+		end
+		body = table.concat(body, '&')
+	end
+	return _callapi(table.concat(query, '/'), body)
 end
