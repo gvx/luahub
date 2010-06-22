@@ -1,3 +1,5 @@
 Requires JSON for Lua and LuaSocket
 
 Not completed yet, especially POST methods are missing as of writing.
+
+To do: add auto-auth if user has a ~/.gitconfig
