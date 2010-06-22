@@ -22,12 +22,20 @@ end
 local _mt_show = {}
 setmetatable(repos.show, _mt_show)
 function _mt_show.__call(self, user, repo, extra) --variants: repos.show(user)
+                             --repos.show(user, repo, {description='Blah', ...}
                              --repos.show(user, repo, 'collaborators') aka repos.show.collaborators(user, repo)
                              --repos.show(user, repo, 'contributors') aka repos.show.contributors(user, repo)
                              --repos.show(user, repo, 'network') aka repos.show.network(user, repo)
                              --repos.show(user, repo, 'languages') aka repos.show.languages(user, repo)
                              --etc.
                              --note show.contributors is different: it takes an extra boolean, whether or not to include anons
+	if type(extra) == 'table' then
+		local e = {}
+		for k,v in pairs(extra) do
+			e['values['..k..']'] = v
+		end
+		extra = e
+	end
 	local t = luahub._apiquery('repos/show', user, repo, extra)
 	if t then
 		t = t[extra] or t.repository or t.repositories
@@ -96,7 +104,6 @@ end
 end]]
 
 -- TODO: add post actions for repos
---  - show
 --  - create
 --  - delete (with or without token, don't forget to return it!)
 --  - set/private

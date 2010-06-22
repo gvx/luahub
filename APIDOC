@@ -50,6 +50,14 @@ luahub.
 		show(user) -> repository_array
 			Lists all public repos (if you are authenticated as
 			that users, it lists private repos as well).
+		show(user, repo, values) -> repository_info
+			If the third argument to show() is a table, the POST
+			method is used and settings of the repository are
+			changed. Of course, you need to be authed for this to
+			work.
+			Possible keys for the third argument are:
+			description, homepage, has_wiki, has_issues,
+			has_downloads.
 		show.
 			collaborators(user, repo) -> collaborator_array
 				Lists the collaborators of a given project.
