@@ -21,6 +21,14 @@ luahub.
 			aid simple uses of the API.
 		show(name) -> user
 			Returns user information on a named user.
+		show(name, 'following') -> following_array
+			Returns a list of everyone a certain user follows.
+		show(name, 'followers') -> followers_array
+			Returns a list of all followers of a certain user.
+		show(name, info) -> user
+			If the second argument is a table, it updates your user
+			info. Possible keys are:
+			name, email, blog, company, location.
 	commits.
 		list(user_id, repository, branch[, path]) -> commit_array
 			Lists all commits of a certain branch of a repository,

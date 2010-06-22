@@ -6,10 +6,17 @@ function user.search(name)
 	return t, #t > 0 and t[1].name
 end
 
-function user.show(name)
-	local t = luahub._apiquery('user/show', name)
+function user.show(name, info)
+	if type(info) == 'table' then
+		local i = {}
+		for k,v in pairs(info) do
+			i['values['..k..']'] = v
+		end
+		info = i
+	end
+	local t = luahub._apiquery('user/show', name, info)
 	if t then
-		t = t.user
+		t = t.user or t.users
 		return t
 	end
 end
