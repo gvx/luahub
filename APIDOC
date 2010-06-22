@@ -95,6 +95,16 @@ luahub.
 		pushable() -> pushable_array
 			Returns an array of all repository you can push to that
 			are not your own.
+		create(name, description, homepage, public) -> nil?
+			Creates a repository with given name. All other arguments
+			are optional.
+		delete(name) -> token
+			First stage of repository deletion, this returns a
+			special token. If you really want to delete this
+			repository, call:
+		delete(name, token)
+			This completes the repository deletion. Use with caution,
+			there's no going back.
 	blob.
 		show(user, repo, tree_sha, path, meta) -> blob_info
 			Show information about a specific blob, located by

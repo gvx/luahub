@@ -103,9 +103,17 @@ end
 	end
 end]]
 
+function repos.create(name, description, homepage, public)
+	luahub._apiquery('repos/create', {name = name, description = description,
+		homepage = homepage, public = public})
+end
+
+function repos.delete(name, token)
+	local t = luahub._apiquery('repos/delete', name, token and {delete_token=token})
+	return t.delete_token
+end
+
 -- TODO: add post actions for repos
---  - create
---  - delete (with or without token, don't forget to return it!)
 --  - set/private
 --  - set/public
 --  - keys/add
