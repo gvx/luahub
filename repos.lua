@@ -113,9 +113,15 @@ function repos.delete(name, token)
 	return t.delete_token
 end
 
+function repos.setprivate(name)
+	luahub._apiquery('repos/set/private', name, {}) -- empty table forces POST
+end
+
+function repos.setpublic(name)
+	luahub._apiquery('repos/set/public', name, {}) -- empty table forces POST
+end
+
 -- TODO: add post actions for repos
---  - set/private
---  - set/public
 --  - keys/add
 --  - keys/remove
 --  - repos/collaborators/:repo/add/:user

@@ -105,6 +105,10 @@ luahub.
 		delete(name, token)
 			This completes the repository deletion. Use with caution,
 			there's no going back.
+		setprivate(name)
+			Makes a public repository private.
+		setpublic(name)
+			Makes a private repository public.
 	blob.
 		show(user, repo, tree_sha, path, meta) -> blob_info
 			Show information about a specific blob, located by
