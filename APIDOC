@@ -92,6 +92,13 @@ luahub.
 		keys(repo) -> public_key_array
 			Returns an array containing all public keys you have
 			set up for a specific repository.
+		keys.
+			add(repo, title, key)
+				Adds a public key to a given repository.
+			remove(repo, key_id)
+				Removes a public key from a repository. This is the
+				same value as found in the id field of a public key
+				object, returned by luahub.repos.keys().
 		pushable() -> pushable_array
 			Returns an array of all repository you can push to that
 			are not your own.

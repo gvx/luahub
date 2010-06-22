@@ -1,4 +1,4 @@
-local repos = {show = {}}
+local repos = {show = {}, keys = {}}
 
 function repos.search(query, language, start_page)
 	local t = ''
@@ -67,12 +67,22 @@ function repos.fork(user, repo)
 	end
 end
 
-function repos.keys(repo)
+local _mt_keys = {}
+setmetatable(repos.keys,_mt_keys)
+function _mt_keys.__call(repo)
 	local t = luahub._apiquery('repos/keys', repo)
 	if t then
 		t = t.public_keys
 		return t
 	end
+end
+
+function repos.keys.add(repo, title, key)
+	luahub._apiquery('repos/keys', repo, 'add', {title = title, key = key})
+end
+
+function repos.keys.remove(repo, key_id)
+	luahub._apiquery('repos/keys', repo, 'remove', {id = key_id})
 end
 
 --[[
@@ -122,8 +132,6 @@ function repos.setpublic(name)
 end
 
 -- TODO: add post actions for repos
---  - keys/add
---  - keys/remove
 --  - repos/collaborators/:repo/add/:user
 --  - repos/collaborators/:repo/remove/:user
 
