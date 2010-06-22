@@ -139,4 +139,12 @@ function repos.collaborators.remove(repo, user)
 	luahub._apiquery('repos/collaborators', repo, 'remove', user, {}) -- empty table forces POST
 end
 
+function repos.watched(user)
+	local t = luahub._apiquery('repos/watched', user, repo)
+	if t then
+		t = t.repositories
+		return t
+	end
+end
+
 luahub.repos = repos

@@ -94,6 +94,9 @@ luahub.
 			Start watching a repository. You must be authed.
 		unwatch(user, repo) -> nil?
 			Stop watching a repository. You must be authed.
+		watched(user) -> repository_array
+			Returns a list of repositories watched by a certain
+			user.
 		fork(user, repo) -> repo_info
 			Fork a repository. Returns information of the forked
 			repository. You must be authed.
