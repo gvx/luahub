@@ -1,7 +1,20 @@
 local repos = {show = {}}
 
-function repos.search(query) -- TODO: add ?language= and ?start_page=
-	local t = luahub._apiquery('repos/search', query)
+function repos.search(query, language, start_page)
+	local t = ''
+	if language or start_page then
+		t = '?'
+		if language then
+			t = t .. 'language=' .. language
+			if start_page then
+				t = t .. '&'
+			end
+		end
+		if start_page then
+			t = t .. 'start_page=' .. start_page
+		end
+	end
+	t = luahub._apiquery('repos/search', query .. t)
 	t = t.repositories
 	return t, #t > 0 and (t[1].username .. '/' .. t[1].name)
 end
