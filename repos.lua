@@ -1,4 +1,4 @@
-local repos = {show = {}, keys = {}}
+local repos = {show = {}, keys = {}, collaborators = {}}
 
 function repos.search(query, language, start_page)
 	local t = ''
@@ -131,9 +131,12 @@ function repos.setpublic(name)
 	luahub._apiquery('repos/set/public', name, {}) -- empty table forces POST
 end
 
--- TODO: add post actions for repos
---  - repos/collaborators/:repo/add/:user
---  - repos/collaborators/:repo/remove/:user
+function repos.collaborators.add(repo, user)
+	luahub._apiquery('repos/collaborators', repo, 'add', user, {}) -- empty table forces POST
+end
 
+function repos.collaborators.remove(repo, user)
+	luahub._apiquery('repos/collaborators', repo, 'remove', user, {}) -- empty table forces POST
+end
 
 luahub.repos = repos

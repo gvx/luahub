@@ -116,6 +116,11 @@ luahub.
 			Makes a public repository private.
 		setpublic(name)
 			Makes a private repository public.
+		collaborators.
+			add(repo, user)
+				Adds a user to a repository.
+			remove(repo, user)
+				Removes a previously added user from a repository.
 	blob.
 		show(user, repo, tree_sha, path, meta) -> blob_info
 			Show information about a specific blob, located by
