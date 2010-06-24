@@ -21,4 +21,12 @@ function user.show(name, info)
 	end
 end
 
+function user.follow(name)
+	luahub._apiquery('user/follow', name, {})
+end
+
+function user.unfollow(name)
+	luahub._apiquery('user/unfollow', name, {})
+end
+
 luahub.user = user
