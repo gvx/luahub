@@ -29,6 +29,10 @@ luahub.
 			If the second argument is a table, it updates your user
 			info. Possible keys are:
 			name, email, blog, company, location.
+		follow(name)
+			Follow a user. You must be authed.
+		unfollow(name)
+			Unfollow a user. You must be authed
 	commits.
 		list(user_id, repository, branch[, path]) -> commit_array
 			Lists all commits of a certain branch of a repository,
