@@ -32,7 +32,7 @@ luahub.
 		follow(name)
 			Follow a user. You must be authed.
 		unfollow(name)
-			Unfollow a user. You must be authed
+			Unfollow a user. You must be authed.
 	commits.
 		list(user_id, repository, branch[, path]) -> commit_array
 			Lists all commits of a certain branch of a repository,
